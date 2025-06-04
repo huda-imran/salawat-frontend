@@ -1,0 +1,109 @@
+.user-creation-form {
+    margin: 80px auto 30px auto;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background-color: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    max-width: none;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    color: #f5f5f5;
+}
+
+.user-creation-form h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 10px;
+}
+
+.section-description {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.user-creation-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-creation-form label {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: #ddd;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.user-creation-form select {
+    appearance: none;
+    background-color: #1B1B1B;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='30,50 70,90 110,50' fill='none' stroke='%23f5f5f5' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    padding-right: 2.5rem;
+    margin-top: 8px;
+    /* ✅ Match input spacing */
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f5f5f5;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-creation-form input {
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #1B1B1B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f5f5f5;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 5px;
+}
+
+.user-creation-form input::placeholder,
+.user-creation-form select:invalid {
+    color: #999;
+}
+
+.user-creation-form input:focus,
+.user-creation-form select:focus {
+    border-color: #e63946;
+    background-color: #252525;
+    outline: none;
+}
+
+.user-creation-form button {
+    background: linear-gradient(135deg, #ff5c5c, #ff7979);
+    color: #fff;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 24px;
+}
+
+.user-creation-form button:hover {
+    background: linear-gradient(135deg, #ff4444, #ff6666);
+    transform: scale(1.01);
+}
+
+.user-creation-form button:active {
+    background-color: #7d1d25;
+    transform: translateY(0);
+}

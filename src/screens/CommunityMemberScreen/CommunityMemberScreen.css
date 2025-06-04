@@ -1,0 +1,68 @@
+.community-member-screen {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    margin-top: 60px;
+}
+
+.form-modules-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.section {
+    flex: 1;
+    min-width: 400px;
+    background-color: #000;
+    border-radius: 12px;
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+
+/* Ensure forms inside take full width */
+
+.user-creation-form,
+.user-search-update-delete {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #f44336;
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.6);
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .form-modules-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section {
+        max-width: 100%;
+    }
+}

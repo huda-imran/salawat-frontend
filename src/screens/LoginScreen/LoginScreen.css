@@ -1,0 +1,199 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.login-form {
+    background-color: #000000;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.login-form select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1b1b1b;
+    /* solid dark */
+    color: #f1f1f1;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 6L9 1' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1b1b1b;
+    /* solid dark */
+    color: #f1f1f1;
+    appearance: textfield;
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus,
+.login-form select:focus {
+    outline: none;
+    border-color: #ff6e6e;
+    background-color: #252525;
+    /* slightly lighter on focus */
+}
+
+.login-form input::placeholder,
+.login-form select:invalid {
+    color: #aaa;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, #ff5c5c, #ff7979);
+    box-shadow: 0 4px 12px rgba(255, 92, 92, 0.4);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-form button:hover {
+    background: linear-gradient(135deg, #ff4444, #ff6666);
+    transform: scale(1.01);
+}
+
+.error-msg {
+    color: #ff4c4c;
+    background-color: rgba(255, 76, 76, 0.05);
+    border: 1px solid rgba(255, 76, 76, 0.2);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.login-description {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 2.5rem;
+    /* room for icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1.1rem;
+    user-select: none;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+/* Override browser autofill styles */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #1b1b1b inset !important;
+    -webkit-text-fill-color: #f1f1f1 !important;
+    transition: background-color 5000s ease-in-out 0s;
+}

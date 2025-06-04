@@ -1,0 +1,46 @@
+.app-footer {
+    background-color: #000;
+    /* Matches the header background color */
+    color: white;
+    /* Consistent text color */
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for elevation */
+    border-top: 2px solid #e63946;
+    /* Matches the red theme color */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    /* Space between links */
+}
+
+.footer-link {
+    color: #61dafb;
+    /* Matches the link color in the theme */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #e63946;
+    /* Red hover effect to match theme */
+}

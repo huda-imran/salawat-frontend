@@ -1,0 +1,331 @@
+/* Overall Page Styles */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+.community-builder-page {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 40px;
+    margin: 85px auto;
+    max-width: 1200px;
+    padding: 20px;
+    flex-wrap: wrap;
+    /* For better responsiveness */
+}
+
+
+/* Left and Right Sections */
+
+.form-section,
+.community-id,
+.members-list,
+.salawat-token {
+    background-color: #000;
+    border: 1px solid #1B1B1B;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Headings for Sections */
+
+.form-section h2,
+.community-id h2,
+.members-list h2,
+.salawat-token h2,
+.info-box h2 {
+    font-size: 20px;
+    color: #fff;
+    /* ✅ Fix: white text on black background */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 5px;
+}
+
+
+/* Forms and Inputs */
+
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+
+/* Buttons */
+
+button {
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-btn,
+.update-btn {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+}
+
+.create-btn:hover,
+.update-btn:hover {
+    background-color: #e63946;
+}
+
+.delete-btn {
+    background-color: #e63946;
+    color: #fff;
+    border: 1px solid #e63946;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Lists */
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin: 5px 0;
+    padding: 8px 12px;
+    background-color: #1B1B1B;
+    border: 1px solid #1B1B1B;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff;
+}
+
+
+/* Right Section */
+
+.right-section {
+    flex: 0.4;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Consistent spacing between sections */
+}
+
+
+/* Community ID Section */
+
+.community-id ul {
+    margin-top: 10px;
+    /* Add spacing after heading */
+}
+
+
+/* Members List */
+
+.members-list {
+    margin-top: 0;
+    /* Remove extra top margin for better alignment */
+}
+
+.members-list ul {
+    margin-top: 10px;
+}
+
+
+/* Salawat Token */
+
+.salawat-token p {
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+    .community-builder-page {
+        flex-direction: column;
+    }
+    .right-section,
+    .form-section {
+        flex: 1;
+        min-width: 100%;
+    }
+}
+
+.left-section {
+    flex: 0.58;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-box {
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.section-description {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.token-value {
+    background-color: #1B1B1B;
+    padding: 10px;
+    border-radius: 8px;
+    color: #f5f5f5;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.builder-dropdown {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1b1b1b;
+    color: #f1f1f1;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 6L9 1' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.builder-dropdown:focus {
+    outline: none;
+    border-color: #ff6e6e;
+    background-color: #252525;
+}
+
+.builder-dropdown:invalid {
+    color: #aaa;
+}
+
+.builder-meta-card {
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.builder-meta-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+.builder-meta-section select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1b1b1b;
+    /* solid dark */
+    color: #f1f1f1;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 6L9 1' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.builder-meta-section:last-child {
+    border-bottom: none;
+}
+
+.scrollable-list {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.scrollable-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.placeholder {
+    color: #777;
+    font-style: italic;
+    padding: 8px 12px;
+}
+
+
+/* Smooth transition wrapper */
+
+.builder-meta-section ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    padding-right: 4px;
+}
+
+
+/* When builder is selected and data is loaded */
+
+.builder-meta-section ul.expanded {
+    max-height: 200px;
+    /* or higher if needed */
+}
+
+
+/* Same scrollbar styling as before */
+
+.builder-meta-section ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.builder-meta-section ul::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.route-fade {
+    animation: fadeIn 0.6s ease;
+}
