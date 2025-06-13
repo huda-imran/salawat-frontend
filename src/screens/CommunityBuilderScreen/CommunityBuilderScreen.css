@@ -189,6 +189,7 @@ ul li {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 20px;
+    width: 100%;
 }
 
 .section-description {
@@ -328,4 +329,23 @@ ul li {
 
 .route-fade {
     animation: fadeIn 0.6s ease;
+}
+
+.builder-table {
+    width: 100%;
+    background-color: #000;
+    color: white;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.builder-table th,
+.builder-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+.builder-table th {
+    background-color: #111;
 }

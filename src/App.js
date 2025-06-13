@@ -31,7 +31,7 @@ const App = () => {
     if (user?.role === 'builder') return '/communitymembermanagement';
     if (user?.role === 'core') return '/communitybuildermanagement';
     if (user?.role === 'admin') return '/tokenmanagement';
-    if (user?.role === 'community') return '/communitymember';
+    if (user?.role === 'member') return '/communitymember';
     
 
 
@@ -57,7 +57,7 @@ const App = () => {
             path="/communitymembermanagement"
             element={
               isLoggedIn && (user?.role === 'builder' || user?.role === 'admin')
-                ? <CommunityMemberScreen />
+                ? <CommunityMemberScreen user={user} />
                 : <Navigate to="/" replace />
             }
           />
@@ -75,7 +75,7 @@ const App = () => {
             path="/communitybuildermanagement"
             element={
               isLoggedIn && (user?.role === 'core' || user?.role === 'admin')
-                ? <CommunityBuilder />
+                ? <CommunityBuilder user={user} />
                 : <Navigate to="/" replace />
             }
           />
@@ -92,7 +92,7 @@ const App = () => {
 <Route
             path="/communitymember"
             element={
-              isLoggedIn && (user?.role === 'community' || user?.role === 'admin')
+              isLoggedIn && (user?.role === 'member' || user?.role === 'admin')
                 ? <MemberScreen />
                 : <Navigate to="/" replace />
             }

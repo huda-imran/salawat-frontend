@@ -33,7 +33,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
       // Wait 1 second before transition
       setTimeout(() => {
         setLoading(false);
-        onLoginSuccess({ username: data.user.username, role: data.user.role });
+        onLoginSuccess({ username: data.user.username, role: data.user.role, walletAddress: data.user.walletAddress, });
       }, 3000);
   
     } catch (err) {
@@ -63,7 +63,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
             required
           >
             <option value="" disabled>Select your role</option>
-            <option value="community">Community Member</option>
+            <option value="member">Community Member</option>
             <option value="builder">Builder</option>
             <option value="core">Core Member</option>
             <option value="admin">Admin</option>

@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../assets/salawat-logo.png';
+import { FiCopy } from 'react-icons/fi';
 
 const Navbar = ({ isLoggedIn, username, onLogout, user }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    if (user?.walletAddress) {
+      navigator.clipboard.writeText(user.walletAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1000);
+    }
+  };
+
+  const shortAddress = user?.walletAddress
+    ? `${user.walletAddress.slice(0, 6)}...${user.walletAddress.slice(-4)}`
+    : '';
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -17,15 +32,19 @@ const Navbar = ({ isLoggedIn, username, onLogout, user }) => {
           <NavLink to="/communitybuildermanagement" end className={({ isActive }) => isActive ? "active-link" : ""}>Core Member Dashboard</NavLink>
           <NavLink to="/communitymembermanagement" end className={({ isActive }) => isActive ? "active-link" : ""}>Builder Dashboard</NavLink>
           <NavLink to="/communitymember" end className={({ isActive }) => isActive ? "active-link" : ""}>Member Dashboard</NavLink>
-
-
-          
         </div>
       )}
 
       {isLoggedIn && (
         <div className="navbar-profile">
           <span className="username">{username}</span>
+          {user?.walletAddress && (
+            <div className="wallet-address" onClick={handleCopy}>
+              <span>{shortAddress}</span>
+              <FiCopy className="copy-icon" />
+              {copied && <span className="copied-msg">Copied</span>}
+            </div>
+          )}
           <button className="logout-btn" onClick={onLogout}>
             Logout
           </button>

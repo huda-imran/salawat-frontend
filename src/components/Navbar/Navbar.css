@@ -23,13 +23,15 @@
 .navbar-profile {
     display: flex;
     align-items: center;
+    gap: 12px;
+    /* add consistent spacing between items */
     padding-right: 30px;
 }
 
 .username {
-    margin-right: 15px;
     font-size: 16px;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .logout-btn {
@@ -72,4 +74,44 @@
 .navbar-links a.active-link {
     color: #ff5c5c;
     font-weight: bold;
+}
+
+.wallet-address {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s ease;
+}
+
+.wallet-address:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.copy-icon {
+    margin-left: 6px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.wallet-address:hover .copy-icon {
+    opacity: 1;
+}
+
+.copied-msg {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    background-color: #444;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #fff;
 }

@@ -104,6 +104,17 @@ h2 {
     text-align: center;
 }
 
+select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 16px;
+    background-color: #1B1B1B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #f5f5f5;
+    font-size: 14px;
+}
+
 
 /* Buttons */
 
@@ -146,10 +157,23 @@ ul {
 li {
     background-color: #1B1B1B;
     margin: 5px 0;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #fff;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+li strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+li span {
+    display: block;
+    margin-top: 4px;
+    color: #aaa;
 }
 
 
