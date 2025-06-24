@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './MemberScreen.css';
 
-const MemberScreen = () => {
+const MemberScreen = ({user}) => {
   return (
     <div className="route-fade">
       <div className="member-screen">
@@ -9,9 +9,9 @@ const MemberScreen = () => {
         {/* Section: Community Info */}
         <div className="section community-info">
           <h2>Community & Builder Details</h2>
-          <p><strong>Community ID:</strong> COMM0001</p>
-          <p><strong>Builder Username:</strong> builder_01</p>
-          <p><strong>Builder Wallet:</strong> 0xA8c9...f12D</p>
+           <p><strong>Community ID:</strong> {user?.communityId || 'N/A'}</p>
+          <p><strong>Builder Username:</strong> {user?.builderUsername || 'N/A'}</p>
+          <p><strong>Builder Wallet:</strong> {user?.builderWallet || 'N/A'}</p>
         </div>
 
         {/* Section: Verification Process Table */}

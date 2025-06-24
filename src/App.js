@@ -15,6 +15,7 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   const handleLoginSuccess = (userData) => {
+    console.log("user data:", userData);
     setUser(userData);
     setIsLoggedIn(true);
   };
@@ -89,14 +90,15 @@ const App = () => {
             }
           />
 
-<Route
-            path="/communitymember"
-            element={
-              isLoggedIn && (user?.role === 'member' || user?.role === 'admin')
-                ? <MemberScreen />
-                : <Navigate to="/" replace />
-            }
-          />
+        <Route
+          path="/communitymember"
+          element={
+            isLoggedIn && (user?.role === 'member' || user?.role === 'admin')
+              ? <MemberScreen user={user} />
+              : <Navigate to="/" replace />
+          }
+        />
+
         </Routes>
 
         
