@@ -274,7 +274,12 @@ const CommunityBuilder = ({user}) => {
               </p>
               <ul className={`scrollable-list ${selectedBuilder && communityIds.length > 0 ? 'expanded' : ''}`}>
                 {selectedBuilder && communityIds.length > 0 ? (
-                  communityIds.map((id, i) => <li key={i}>{id}</li>)
+                 communityIds.map((comm, i) => (
+                  <li key={i}>
+                    <strong>{comm.name}</strong><br />
+                    <span style={{ fontSize: '0.85rem', color: '#aaa' }}>{comm.communityId}</span>
+                  </li>
+                ))
                 ) : (
                   <li className="placeholder">No communities to display.</li>
                 )}

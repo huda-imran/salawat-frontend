@@ -90,6 +90,13 @@
     transition: background 0.3s ease;
 }
 
+.wallet-address span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
 .wallet-address:hover {
     background: rgba(255, 255, 255, 0.1);
 }

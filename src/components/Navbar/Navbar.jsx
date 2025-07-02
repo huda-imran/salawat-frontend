@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../assets/salawat-logo.png';
 import { FiCopy } from 'react-icons/fi';
+import { ethers } from 'ethers';
 
 const Navbar = ({ isLoggedIn, username, onLogout, user }) => {
   const [copied, setCopied] = useState(false);
+  const [balance, setBalance] = useState(null);
 
   const handleCopy = () => {
     if (user?.walletAddress) {
@@ -18,6 +20,22 @@ const Navbar = ({ isLoggedIn, username, onLogout, user }) => {
   const shortAddress = user?.walletAddress
     ? `${user.walletAddress.slice(0, 6)}...${user.walletAddress.slice(-4)}`
     : '';
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        if (!user?.walletAddress) return;
+        const provider = new ethers.JsonRpcProvider(process.env.REACT_APP_RPC_URL);
+        const rawBalance = await provider.getBalance(user.walletAddress);
+        const formatted = ethers.formatEther(rawBalance);
+        setBalance(Number(formatted).toFixed(4)); // rounded to 4 decimals
+      } catch (err) {
+        console.error('❌ Error fetching balance:', err);
+      }
+    };
+
+    fetchBalance();
+  }, [user?.walletAddress]);
 
   return (
     <nav className="navbar">
@@ -40,7 +58,7 @@ const Navbar = ({ isLoggedIn, username, onLogout, user }) => {
           <span className="username">{username}</span>
           {user?.walletAddress && (
             <div className="wallet-address" onClick={handleCopy}>
-              <span>{shortAddress}</span>
+              <span>{shortAddress} ({balance} POL)</span>
               <FiCopy className="copy-icon" />
               {copied && <span className="copied-msg">Copied</span>}
             </div>
