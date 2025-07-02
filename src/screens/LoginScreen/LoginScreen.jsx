@@ -33,7 +33,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
       // Wait 1 second before transition
       setTimeout(() => {
         setLoading(false);
-        onLoginSuccess({ username: data.user.username, role: data.user.role, walletAddress: data.user.walletAddress, communityId:data.user.communityId, builderUsername: data.user.builderUsername, builderWallet: data.user.builderWallet});
+        onLoginSuccess({ username: data.user.username, role: data.user.role, walletAddress: data.user.walletAddress, communityId:data.user.communityId, builderUsername: data.user.builderUsername, builderWallet: data.user.builderWallet, communityName: data.user.communityName});
       }, 3000);
   
     } catch (err) {

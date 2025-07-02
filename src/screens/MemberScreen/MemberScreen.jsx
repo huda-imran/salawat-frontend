@@ -59,6 +59,7 @@ const MemberScreen = ({ user }) => {
         <div className="section community-info">
           <h2>Community & Builder Details</h2>
           <p><strong>Community ID:</strong> {user?.communityId || 'N/A'}</p>
+          <p><strong>Community Name:</strong> {user?.communityName || 'N/A'}</p>
           <p><strong>Builder Username:</strong> {user?.builderUsername || 'N/A'}</p>
           <p><strong>Builder Wallet:</strong> {user?.builderWallet || 'N/A'}</p>
         </div>
@@ -70,7 +71,7 @@ const MemberScreen = ({ user }) => {
             <thead>
               <tr>
                 <th>Token ID</th>
-                <th>Count</th>
+                {/* <th>Count</th> */}
                 <th>Status</th>
               </tr>
             </thead>
@@ -81,7 +82,7 @@ const MemberScreen = ({ user }) => {
                 requests.map((req, idx) => (
                   <tr key={idx}>
                     <td>{req.tokenId}</td>
-                    <td>{req.count}</td>
+                    {/* <td>{req.count}</td> */}
                     <td>{req.status}</td>
                   </tr>
                 ))
