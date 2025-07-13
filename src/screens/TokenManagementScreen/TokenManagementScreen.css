@@ -141,3 +141,42 @@ tr:nth-child(odd) {
         grid-template-columns: 1fr;
     }
 }
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.1s ease;
+}
+
+.copy-btn:hover {
+    transform: scale(1.1);
+}
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+
+/* For Firefox */
+
+.table-container {
+    scrollbar-color: #444 #111;
+    scrollbar-width: thin;
+}
