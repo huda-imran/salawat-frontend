@@ -122,30 +122,30 @@ const CoreMemberScreen = () => {
           </div>
 
         <div className="form-section">
-  <h2>Alteration or Deletion</h2>
-  <p className="section-description">
-    Select a field to update or delete the user.
-  </p>
+          <h2>Alteration or Deletion</h2>
+          <p className="section-description">
+            Select a field to update or delete the user.
+          </p>
 
-  <input type="text" placeholder="Search Username" value={editUser.username} onChange={e => setEditUser({ ...editUser, username: e.target.value })} />
+          <input type="text" placeholder="Search Username" value={editUser.username} onChange={e => setEditUser({ ...editUser, username: e.target.value })} />
 
-  <label>Select Field to Update</label>
-  <select value={selectedField} onChange={e => setSelectedField(e.target.value)}>
-    <option value="">-- Select Field --</option>
-    <option value="fullName">Full Name</option>
-    <option value="id">ID</option>
-    <option value="email">Email</option>
-    <option value="password">Password</option>
-  </select>
+          <label>Select Field to Update</label>
+          <select value={selectedField} onChange={e => setSelectedField(e.target.value)}>
+            <option value="">-- Select Field --</option>
+            <option value="fullName">Full Name</option>
+            <option value="id">ID</option>
+            <option value="email">Email</option>
+            <option value="password">Password</option>
+          </select>
 
-  {selectedField && (
-    <input
-      type={selectedField === 'email' ? 'email' : 'text'}
-      placeholder={`New ${selectedField === 'id' ? 'ID' : selectedField === 'fullName' ? 'Full Name' : selectedField}`}
-      value={fieldValue}
-      onChange={e => setFieldValue(e.target.value)}
-    />
-  )}
+          {selectedField && (
+            <input
+              type={selectedField === 'email' ? 'email' : 'text'}
+              placeholder={`New ${selectedField === 'id' ? 'ID' : selectedField === 'fullName' ? 'Full Name' : selectedField}`}
+              value={fieldValue}
+              onChange={e => setFieldValue(e.target.value)}
+            />
+          )}
 
   <div className="button-group">
     <button className="delete-btn" onClick={handleDelete}>Delete</button>

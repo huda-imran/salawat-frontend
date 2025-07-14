@@ -204,11 +204,12 @@ const CommunityMemberScreen = ({ user }) => {
               <label>Assign to Community ID</label>
               <select value={selectedCommunity} onChange={(e) => setSelectedCommunity(e.target.value)}>
                 <option value="">Select Community</option>
-                {communityIds.map((id) => (
-                  <option key={id} value={id}>
-                    {id}
+                  {communityIds.map((c) => (
+                  <option key={c.communityId} value={c.communityId}>
+                    {c.name}
                   </option>
                 ))}
+
               </select>
 
               <button type="submit" className="create-btn">
