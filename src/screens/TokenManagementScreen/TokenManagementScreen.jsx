@@ -188,10 +188,42 @@ const TokenManagementScreen = () => {
           <input type="text" value={searchId} onChange={(e) => setSearchId(e.target.value)} placeholder="Enter Token ID" />
           <button className="search-btn" onClick={handleSearch}>Search</button>
           {searchResult && (
-            <div className="search-result">
-              <pre>{JSON.stringify(searchResult, null, 2)}</pre>
+          <div className="token-details">
+            <div>
+              <label>Token ID</label>
+              <span>{searchResult.tokenId}</span>
             </div>
-          )}
+            <div>
+              <label>Name</label>
+              <span>{searchResult.name}</span>
+            </div>
+            <div>
+              <label>Symbol</label>
+              <span>{searchResult.symbol}</span>
+            </div>
+            <div>
+              <label>Value</label>
+              <span>{searchResult.value}</span>
+            </div>
+            <div>
+              <label>Verification Count</label>
+              <span>{searchResult.verificationCount}</span>
+            </div>
+            <div>
+              <label>Issued Date</label>
+              <span>{new Date(searchResult.issuedDate).toLocaleString()}</span>
+            </div>
+            <div>
+              <label>Status</label>
+              <span>{searchResult.verifiedStatus}</span>
+            </div>
+            <div>
+              <label>Owner</label>
+              <span>{searchResult.owner}</span>
+            </div>
+          </div>
+        )}
+
         </div>
 
         <div className="form-section">
