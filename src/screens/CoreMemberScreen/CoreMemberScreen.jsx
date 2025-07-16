@@ -25,6 +25,8 @@ const CoreMemberScreen = () => {
     email: '',
   });
 
+  const [fetchedUser, setFetchedUser] = useState(null);  // Added state to hold fetched user info
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -35,6 +37,34 @@ const CoreMemberScreen = () => {
       setUsers(res.data);
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const fetchUserInfo = async (username) => {
+    if (!username) {
+      showMessage('error', 'Please enter a username to search.');
+      return;
+    }
+
+    try {
+      const res = await axios.get(`${API}/core/${username}`);
+      console.log(res.data);
+      if (res.data.success) {
+        setFetchedUser(res.data.user);  // Store the fetched user data
+        setEditUser({
+          username: res.data.user.username,
+          fullName: res.data.user.fullName,
+          id: res.data.user.id,
+          email: res.data.user.email,
+        });
+      } else {
+        showMessage('error', 'User not found.');
+        setFetchedUser(null);  // Clear the fetched user data if not found
+        setEditUser({ username: '', fullName: '', id: '', email: '' });
+      }
+    } catch (err) {
+      console.error(err);
+      showMessage('error', 'Failed to fetch user info. Please try again.');
     }
   };
 
@@ -59,7 +89,6 @@ const CoreMemberScreen = () => {
       }
     }
   };
-  
 
   const handleDelete = async () => {
     try {
@@ -74,21 +103,20 @@ const CoreMemberScreen = () => {
       showMessage('error', 'Failed to delete core user. Please try again.');
     }
   };
-  
 
   const handleDynamicUpdate = async () => {
     try {
       if (!editUser.username || !selectedField || !fieldValue) {
         return showMessage('error', 'Please complete all fields before updating.');
       }
-  
+
       showMessage('loading', `Updating ${selectedField}...`);
-      
+
       const payload = { [selectedField]: fieldValue };
-  
+
       await axios.put(`${API}/core/update/${editUser.username}`, payload);
       showMessage('success', `${selectedField} updated successfully.`);
-  
+
       fetchUsers();
       setEditUser({ username: '', fullName: '', id: '', email: '' });
       setSelectedField('');
@@ -98,8 +126,6 @@ const CoreMemberScreen = () => {
       showMessage('error', `Failed to update ${selectedField}.`);
     }
   };
-  
-  
 
   return (
     <div className='route-fade'>
@@ -121,39 +147,52 @@ const CoreMemberScreen = () => {
             </form>
           </div>
 
-        <div className="form-section">
-          <h2>Alteration or Deletion</h2>
-          <p className="section-description">
-            Select a field to update or delete the user.
-          </p>
+          <div className="form-section">
+            <h2>Alteration or Deletion</h2>
+            <p className="section-description">
+              Select a field to update or delete the user.
+            </p>
 
-          <input type="text" placeholder="Search Username" value={editUser.username} onChange={e => setEditUser({ ...editUser, username: e.target.value })} />
+            <input type="text" placeholder="Search Username" value={editUser.username} onChange={e => setEditUser({ ...editUser, username: e.target.value })} />
+            <button onClick={() => fetchUserInfo(editUser.username)}>Search</button>
 
-          <label>Select Field to Update</label>
-          <select value={selectedField} onChange={e => setSelectedField(e.target.value)}>
-            <option value="">-- Select Field --</option>
-            <option value="fullName">Full Name</option>
-            <option value="id">ID</option>
-            <option value="email">Email</option>
-            <option value="password">Password</option>
-          </select>
+            <label>Select Field to Update</label>
+            <select value={selectedField} onChange={e => setSelectedField(e.target.value)}>
+              <option value="">-- Select Field --</option>
+              <option value="fullName">Full Name</option>
+              <option value="id">ID</option>
+              <option value="email">Email</option>
+              <option value="password">Password</option>
+            </select>
 
-          {selectedField && (
-            <input
-              type={selectedField === 'email' ? 'email' : 'text'}
-              placeholder={`New ${selectedField === 'id' ? 'ID' : selectedField === 'fullName' ? 'Full Name' : selectedField}`}
-              value={fieldValue}
-              onChange={e => setFieldValue(e.target.value)}
-            />
-          )}
+            {selectedField && (
+              <input
+                type={selectedField === 'email' ? 'email' : 'text'}
+                placeholder={`New ${selectedField === 'id' ? 'ID' : selectedField === 'fullName' ? 'Full Name' : selectedField}`}
+                value={fieldValue}
+                onChange={e => setFieldValue(e.target.value)}
+              />
+            )}
 
-  <div className="button-group">
-    <button className="delete-btn" onClick={handleDelete}>Delete</button>
-    <button className="update-btn" onClick={handleDynamicUpdate}>Update</button>
-  </div>
+            <div className="button-group">
+              <button className="delete-btn" onClick={handleDelete}>Delete</button>
+              <button className="update-btn" onClick={handleDynamicUpdate}>Update</button>
+            </div>
+
+                {/* Display fetched user info below the search button */}
+            {fetchedUser && (
+              <div className="user-info-display">
+                <p><strong>Username:</strong> {fetchedUser.username}</p>
+                <p><strong>Full Name:</strong> {fetchedUser.fullName}</p>
+                <p><strong>ID:</strong> {fetchedUser.id}</p>
+                <p><strong>Email:</strong> {fetchedUser.email}</p>
+              </div>
+            )}
           </div>
 
         </div>
+
+        
 
         <div className="bottom-section">
           <div className="info-box">
@@ -175,4 +214,3 @@ const CoreMemberScreen = () => {
 };
 
 export default CoreMemberScreen;
-

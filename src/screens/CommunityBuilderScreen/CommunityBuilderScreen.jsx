@@ -13,6 +13,7 @@ const CommunityBuilder = ({user}) => {
   const [registeredMembers, setRegisteredMembers] = useState([]);
   const [newCommunityName, setNewCommunityName] = useState('');
   const { showMessage } = useMessage();
+   const [fetchedBuilder, setFetchedBuilder] = useState(null);
 
   const [formData, setFormData] = useState({
     username: '',
@@ -80,6 +81,21 @@ const CommunityBuilder = ({user}) => {
       });
   };
 
+    // Function to fetch builder info
+  const fetchBuilderInfo = async (username) => {
+    if (!username) return showMessage('error', 'Please enter a username to search.');
+
+    try {
+      const res = await axios.get(`${API}/builder/${username}`);
+      if (res.data) {
+        setFetchedBuilder(res.data); // Store the fetched builder info
+      }
+    } catch (err) {
+      console.error(err);
+      showMessage('error', 'Builder not found.');
+    }
+  };
+
   const handleDeleteBuilder = () => {
     if (!searchUsername) return showMessage('error', 'Please enter a username to delete.');
     showMessage('loading', 'Deleting Builder...');
@@ -144,25 +160,28 @@ const CommunityBuilder = ({user}) => {
             </form>
           </div>
 
-          {/* Update/Delete */}
           <div className="form-section">
-            <h2>Alteration or Deletion</h2>
-            <input type="text" placeholder="Search Username" value={searchUsername} onChange={e => setSearchUsername(e.target.value)} />
-            <select value={selectedField} onChange={e => setSelectedField(e.target.value)}>
-              <option value="">-- Select Field --</option>
-              <option value="fullName">Full Name</option>
-              <option value="id">ID</option>
-              <option value="email">Email</option>
-              <option value="password">Password</option>
-            </select>
-            {selectedField && (
-              <input type="text" placeholder={`New ${selectedField}`} value={fieldValue} onChange={e => setFieldValue(e.target.value)} />
+            <h2>Search Builder</h2>
+            <input
+              type="text"
+              placeholder="Search Builder Username"
+              onChange={(e) => setSelectedBuilder(e.target.value)}
+            />
+            <button onClick={() => fetchBuilderInfo(selectedBuilder)}>Search</button>
+
+            {/* Display fetched builder info */}
+            {fetchedBuilder && (
+              <div className="builder-info-display">
+                <p><strong>Username:</strong> {fetchedBuilder.username}</p>
+                <p><strong>Full Name:</strong> {fetchedBuilder.fullName}</p>
+                <p><strong>Email:</strong> {fetchedBuilder.email}</p>
+                <p><strong>ID:</strong> {fetchedBuilder.id}</p>
+                <p><strong>Wallet Address:</strong> {fetchedBuilder.walletAddress}</p>
+              </div>
             )}
-            <div className="button-group">
-              <button className="delete-btn" onClick={handleDeleteBuilder}>Delete</button>
-              <button className="update-btn" onClick={handleDynamicUpdate}>Update</button>
-            </div>
           </div>
+
+         
 
           <div className="info-box">
             <h2>All Builders</h2>
@@ -328,6 +347,25 @@ const CommunityBuilder = ({user}) => {
                 />
                 <button type="submit" className="create-btn" disabled={!selectedBuilder}>Create Community</button>
               </form>
+            </div>
+          </div>
+           {/* Update/Delete */}
+          <div className="form-section">
+            <h2>Alteration or Deletion</h2>
+            <input type="text" placeholder="Search Username" value={searchUsername} onChange={e => setSearchUsername(e.target.value)} />
+            <select value={selectedField} onChange={e => setSelectedField(e.target.value)}>
+              <option value="">-- Select Field --</option>
+              <option value="fullName">Full Name</option>
+              <option value="id">ID</option>
+              <option value="email">Email</option>
+              <option value="password">Password</option>
+            </select>
+            {selectedField && (
+              <input type="text" placeholder={`New ${selectedField}`} value={fieldValue} onChange={e => setFieldValue(e.target.value)} />
+            )}
+            <div className="button-group">
+              <button className="delete-btn" onClick={handleDeleteBuilder}>Delete</button>
+              <button className="update-btn" onClick={handleDynamicUpdate}>Update</button>
             </div>
           </div>
 
