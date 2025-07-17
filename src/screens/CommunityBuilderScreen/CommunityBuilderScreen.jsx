@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './CommunityBuilderScreen.css';
 import axios from 'axios';
 import { useMessage } from '../../context/MessageContext'; // adjust path if needed
+import { use } from 'react';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -48,7 +49,8 @@ const CommunityBuilder = ({user}) => {
 
   const fetchBuilders = async () => {
     try {
-      const res = await axios.get(`${API}/builder/all`);
+      console.log("user",user.username);
+      const res = await axios.get(`${API}/builder/all/${user.username}`);
       console.log(res.data)
       setBuilders(res.data);
       
